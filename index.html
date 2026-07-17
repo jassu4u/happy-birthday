@@ -3,63 +3,383 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Tarun ❤️</title>
 
-    <title>Happy Birthday ❤️</title>
-
-    <link rel="stylesheet"
-          href="style.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
 
-    <!-- Animated Background -->
-    <div id="stars"></div>
 
-    <!-- Loading Screen -->
-    <section id="loading">
+<!-- MUSIC -->
 
-        <h1>Preparing Something Special...</h1>
+<audio id="music" loop>
+    <source src="assets/music/birthday.mp3" type="audio/mp3">
+</audio>
 
-        <div class="loader">
 
-            <div class="progress"></div>
 
-        </div>
+<!-- STAR BACKGROUND -->
 
-    </section>
+<div class="stars"></div>
 
-    <!-- Password Screen -->
-    <section id="passwordScreen">
 
-        <div class="glass">
 
-            <h2>❤️ Birthday Surprise ❤️</h2>
+<!-- LOADING SCREEN -->
 
-            <p>Only the Birthday Boy Can Enter</p>
+<section id="loading">
 
-            <input
-                type="password"
-                id="password"
-                placeholder="Enter Password">
+<h1>
+Creating Something Special For Tarun ❤️
+</h1>
 
-            <button onclick="checkPassword()">
+<div class="loader">
+<div class="progress"></div>
+</div>
 
-                Unlock ❤️
+</section>
 
-            </button>
 
-            <p id="wrong"></p>
 
-        </div>
 
-    </section>
+<!-- PASSWORD SCREEN -->
 
-    <script src="script.js"></script>
+<section id="passwordScreen">
+
+
+<div class="card">
+
+
+<h1>🎁 A Surprise For You</h1>
+
+<p>
+Only Tarun can unlock this ❤️
+</p>
+
+
+<input 
+type="password"
+id="password"
+placeholder="Enter secret password">
+
+
+<button onclick="unlock()">
+Unlock 💖
+</button>
+
+
+<p id="error"></p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- GIFT SECTION -->
+
+
+<section id="giftScreen">
+
+
+<h1>
+You unlocked it ❤️
+</h1>
+
+
+<div class="gift" onclick="openGift()">
+
+🎁
+
+</div>
+
+
+<p>
+Tap the gift box
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- BIRTHDAY SCREEN -->
+
+
+<section id="birthday">
+
+
+<h1>
+🎉 HAPPY BIRTHDAY 🎉
+</h1>
+
+
+<h2>
+My Love Tarun ❤️
+</h2>
+
+
+<div id="hearts"></div>
+
+
+<button onclick="showLetter()">
+Open My Letter 💌
+</button>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- LOVE LETTER -->
+
+
+<section id="letter">
+
+
+<div class="paper">
+
+
+<h2>
+For Tarun ❤️
+</h2>
+
+
+<p id="typing"></p>
+
+
+<button onclick="showGallery()">
+Our Memories 📸
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- MEMORY GALLERY -->
+
+
+<section id="gallery">
+
+
+<h1>
+Our Beautiful Memories ❤️
+</h1>
+
+
+<div class="photos">
+
+
+<img src="assets/photos/photo1.jpg">
+
+<img src="assets/photos/photo2.jpg">
+
+<img src="assets/photos/photo3.jpg">
+
+
+</div>
+
+
+<button onclick="showReasons()">
+Reasons I Love You ❤️
+</button>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- REASONS -->
+
+
+<section id="reasons">
+
+
+<h1>
+Reasons Why I Love You ❤️
+</h1>
+
+
+<div class="reason">
+Your smile makes my day 😊
+</div>
+
+
+<div class="reason">
+Your care makes me feel special 🥹
+</div>
+
+
+<div class="reason">
+Your silly jokes make me laugh 😂
+</div>
+
+
+<div class="reason">
+Because you are my Tarun ❤️
+</div>
+
+
+
+<button onclick="showStars()">
+Make A Wish ⭐
+</button>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- STARS -->
+
+
+<section id="wish">
+
+
+<h1>
+Choose a star ✨
+</h1>
+
+
+<div class="star"
+onclick="wish()">
+⭐
+</div>
+
+
+<p id="wishText"></p>
+
+
+<button onclick="startGame()">
+Play Game 🎮
+</button>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- MINI GAME -->
+
+
+<section id="game">
+
+
+<h1>
+Catch Hearts ❤️
+</h1>
+
+
+<h2>
+Score:
+<span id="score">
+0
+</span>
+</h2>
+
+
+<div id="heartGame">
+❤️
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- FINAL -->
+
+<section id="final">
+
+
+<h1>
+🎆 Happy Birthday Tarun 🎆
+</h1>
+
+
+<p>
+
+No matter where life takes us,
+I will always celebrate you,
+support you and love you.
+
+<br><br>
+
+Thank you for being my favourite person.
+
+<br><br>
+
+Forever yours,
+
+<br>
+
+Jassu ❤️
+
+</p>
+
+
+</section>
+
+
+
+
+<script src="script.js"></script>
+
 
 </body>
 
