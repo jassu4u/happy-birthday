@@ -4,6 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Happy Birthday Tarun ❤️</title>
@@ -16,6 +17,11 @@
 <body>
 
 
+<!-- Background -->
+<div class="stars"></div>
+
+
+
 <!-- MUSIC -->
 
 <audio id="music" loop>
@@ -24,38 +30,55 @@
 
 
 
-<!-- STAR BACKGROUND -->
-
-<div class="stars"></div>
-
 
 
 <!-- LOADING SCREEN -->
 
-<section id="loading">
+<section id="loading" class="screen active">
+
+
+<div class="loading-box">
 
 <h1>
-Creating Something Special For Tarun ❤️
+Creating Something Special ❤️
 </h1>
 
+<p>
+For Tarun ✨
+</p>
+
+
 <div class="loader">
+
 <div class="progress"></div>
+
 </div>
+
+
+</div>
+
 
 </section>
 
 
 
 
+
+
+
 <!-- PASSWORD SCREEN -->
 
-<section id="passwordScreen">
+
+<section id="passwordScreen" class="screen">
 
 
-<div class="card">
+<div class="glass-card">
 
 
-<h1>🎁 A Surprise For You</h1>
+<h1>
+🎁 Birthday Surprise
+</h1>
+
 
 <p>
 Only Tarun can unlock this ❤️
@@ -65,11 +88,13 @@ Only Tarun can unlock this ❤️
 <input 
 type="password"
 id="password"
-placeholder="Enter secret password">
+placeholder="Secret password">
 
 
-<button onclick="unlock()">
+<button id="unlockBtn">
+
 Unlock 💖
+
 </button>
 
 
@@ -87,26 +112,29 @@ Unlock 💖
 
 
 
-<!-- GIFT SECTION -->
+
+<!-- GIFT SCREEN -->
 
 
-<section id="giftScreen">
+<section id="giftScreen" class="screen">
 
 
 <h1>
-You unlocked it ❤️
+You unlocked it 🥳
 </h1>
 
 
-<div class="gift" onclick="openGift()">
+<div id="giftBox">
+
 
 🎁
+
 
 </div>
 
 
 <p>
-Tap the gift box
+Tap the gift box ❤️
 </p>
 
 
@@ -119,27 +147,42 @@ Tap the gift box
 
 
 
-<!-- BIRTHDAY SCREEN -->
+<!-- BIRTHDAY REVEAL -->
 
 
-<section id="birthday">
+<section id="birthday" class="screen">
 
 
-<h1>
+<div class="firework-area"></div>
+
+
+<h1 class="birthday-title">
+
 🎉 HAPPY BIRTHDAY 🎉
+
 </h1>
 
 
 <h2>
+
 My Love Tarun ❤️
+
 </h2>
 
 
-<div id="hearts"></div>
+
+<p>
+
+From your Jassu 💕
+
+</p>
 
 
-<button onclick="showLetter()">
+
+<button id="letterBtn">
+
 Open My Letter 💌
+
 </button>
 
 
@@ -156,22 +199,24 @@ Open My Letter 💌
 <!-- LOVE LETTER -->
 
 
-<section id="letter">
+<section id="letter" class="screen">
 
 
-<div class="paper">
+<div class="letter-paper">
 
 
 <h2>
-For Tarun ❤️
+Dear Tarun ❤️
 </h2>
 
 
-<p id="typing"></p>
+<p id="letterText"></p>
 
 
-<button onclick="showGallery()">
+<button id="galleryBtn">
+
 Our Memories 📸
+
 </button>
 
 
@@ -191,29 +236,33 @@ Our Memories 📸
 <!-- MEMORY GALLERY -->
 
 
-<section id="gallery">
+<section id="gallery" class="screen">
 
 
 <h1>
-Our Beautiful Memories ❤️
+Our Memories ❤️
 </h1>
 
 
-<div class="photos">
+
+<div class="gallery">
 
 
-<img src="assets/photos/photo1.jpg">
+<img src="assets/photos/photo1.jpg" alt="memory">
 
-<img src="assets/photos/photo2.jpg">
+<img src="assets/photos/photo2.jpg" alt="memory">
 
-<img src="assets/photos/photo3.jpg">
+<img src="assets/photos/photo3.jpg" alt="memory">
 
 
 </div>
 
 
-<button onclick="showReasons()">
+
+<button id="reasonBtn">
+
 Reasons I Love You ❤️
+
 </button>
 
 
@@ -230,37 +279,53 @@ Reasons I Love You ❤️
 <!-- REASONS -->
 
 
-<section id="reasons">
+<section id="reasons" class="screen">
 
 
 <h1>
-Reasons Why I Love You ❤️
+
+Why I Love You ❤️
+
 </h1>
 
 
-<div class="reason">
-Your smile makes my day 😊
+
+<div class="reason-card">
+
+Your smile makes my worst days better 😊
+
 </div>
 
 
-<div class="reason">
+
+<div class="reason-card">
+
 Your care makes me feel special 🥹
+
 </div>
 
 
-<div class="reason">
-Your silly jokes make me laugh 😂
+
+<div class="reason-card">
+
+Your silly moments make me laugh 😂
+
 </div>
 
 
-<div class="reason">
+
+<div class="reason-card">
+
 Because you are my Tarun ❤️
+
 </div>
 
 
 
-<button onclick="showStars()">
+<button id="starBtn">
+
 Make A Wish ⭐
+
 </button>
 
 
@@ -273,29 +338,39 @@ Make A Wish ⭐
 
 
 
-<!-- STARS -->
+
+<!-- WISH STAR -->
 
 
-<section id="wish">
+<section id="wish" class="screen">
 
 
 <h1>
-Choose a star ✨
+
+Choose your lucky star ✨
+
 </h1>
 
 
-<div class="star"
-onclick="wish()">
+
+<div id="wishStar">
+
 ⭐
+
 </div>
 
 
-<p id="wishText"></p>
+
+<p id="wishMessage"></p>
 
 
-<button onclick="startGame()">
-Play Game 🎮
+
+<button id="gameBtn">
+
+Play A Game 🎮
+
 </button>
+
 
 
 </section>
@@ -311,69 +386,113 @@ Play Game 🎮
 <!-- MINI GAME -->
 
 
-<section id="game">
+<section id="game" class="screen">
 
 
 <h1>
+
 Catch Hearts ❤️
+
 </h1>
 
 
 <h2>
+
 Score:
+
 <span id="score">
+
 0
+
 </span>
+
 </h2>
 
 
-<div id="heartGame">
+
+<div id="catchHeart">
+
 ❤️
+
 </div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- FINAL -->
-
-<section id="final">
-
-
-<h1>
-🎆 Happy Birthday Tarun 🎆
-</h1>
 
 
 <p>
 
-No matter where life takes us,
-I will always celebrate you,
-support you and love you.
-
-<br><br>
-
-Thank you for being my favourite person.
-
-<br><br>
-
-Forever yours,
-
-<br>
-
-Jassu ❤️
+Catch 10 hearts to unlock your surprise 🎁
 
 </p>
 
 
 </section>
+
+
+
+
+
+
+
+
+
+<!-- FINAL SURPRISE -->
+
+
+<section id="final" class="screen">
+
+
+<div class="final-box">
+
+
+<h1>
+
+🎆 Happy Birthday Tarun 🎆
+
+</h1>
+
+
+
+<p>
+
+No matter how far we are,
+
+you will always be someone very special to me.
+
+<br><br>
+
+
+Thank you for all the smiles, memories and happiness.
+
+<br><br>
+
+
+I hope your life is always filled with success and love.
+
+<br><br>
+
+
+Happy Birthday my favourite person ❤️
+
+
+<br><br>
+
+
+Forever yours,
+
+<br>
+
+Jassu 💕
+
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
 
 
 
