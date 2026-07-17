@@ -1,193 +1,275 @@
 *{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
 }
+
 
 body{
 
-overflow:hidden;
-font-family:Arial, sans-serif;
-background:#000;
-color:white;
+    width:100%;
+    min-height:100vh;
+    overflow-x:hidden;
+    background:#050014;
+    color:white;
 
 }
 
-/* Stars */
 
-#stars{
+
+section{
+
+    width:100%;
+    height:100vh;
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    flex-direction:column;
+
+    text-align:center;
+
+    position:absolute;
+    top:0;
+    left:0;
+
+    padding:20px;
+
+}
+
+
+
+
+
+
+/* =====================
+   STAR BACKGROUND
+===================== */
+
+
+.stars{
 
 position:fixed;
 width:100%;
 height:100%;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-animation:moveStars 100s linear infinite;
+
+background:
+
+radial-gradient(circle at 20% 20%,white 1px,transparent 2px),
+radial-gradient(circle at 80% 30%,white 1px,transparent 2px),
+radial-gradient(circle at 50% 80%,white 1px,transparent 2px),
+radial-gradient(circle at 10% 70%,white 1px,transparent 2px);
+
+background-size:200px 200px;
+
+animation:starsMove 20s linear infinite;
+
+z-index:-1;
 
 }
 
-@keyframes moveStars{
+
+
+@keyframes starsMove{
 
 from{
-
-background-position:0 0;
-
+transform:translateY(0);
 }
 
 to{
-
-background-position:1000px 1000px;
-
+transform:translateY(-200px);
 }
 
 }
 
-/* Loading */
+
+
+
+
+
+/* =====================
+ LOADING SCREEN
+===================== */
+
 
 #loading{
 
-position:absolute;
-width:100%;
-height:100vh;
-
 display:flex;
 
-justify-content:center;
-
-align-items:center;
-
-flex-direction:column;
-
-background:black;
-
-z-index:10;
+background:#000;
 
 }
 
+
+
+#loading h1{
+
+font-size:25px;
+
+animation:pulse 2s infinite;
+
+}
+
+
+
 .loader{
 
-margin-top:20px;
-
-width:300px;
-
-height:8px;
+width:280px;
+height:10px;
 
 background:#222;
 
 border-radius:20px;
 
+margin-top:30px;
+
 overflow:hidden;
 
 }
 
+
+
 .progress{
 
 height:100%;
-
 width:0%;
 
-background:hotpink;
+background:linear-gradient(
+90deg,
+#ff4d9d,
+#ff9de2
+);
 
-animation:load 4s linear forwards;
+animation:load 4s forwards;
 
 }
+
+
 
 @keyframes load{
 
 to{
-
 width:100%;
+}
+
+}
+
+
+
+@keyframes pulse{
+
+50%{
+
+opacity:.5;
 
 }
 
 }
 
-/* Password */
 
-#passwordScreen{
 
-display:none;
 
-position:absolute;
 
-width:100%;
 
-height:100vh;
 
-justify-content:center;
 
-align-items:center;
+/* =====================
+ PASSWORD CARD
+===================== */
 
-}
 
-.glass{
+.card{
 
-width:420px;
-
-padding:40px;
-
-border-radius:20px;
-
-background:rgba(255,255,255,.08);
+background:rgba(255,255,255,.12);
 
 backdrop-filter:blur(20px);
 
-text-align:center;
+padding:35px;
 
-box-shadow:0 0 30px hotpink;
+border-radius:25px;
+
+width:90%;
+max-width:400px;
+
+box-shadow:
+
+0 0 30px rgba(255,0,150,.5);
+
+}
+
+
+
+.card h1{
+
+font-size:28px;
 
 }
 
-.glass h2{
 
-margin-bottom:20px;
 
-}
+.card p{
 
-.glass p{
-
-margin:15px;
+margin:20px 0;
 
 }
+
+
 
 input{
 
 width:100%;
 
-padding:14px;
+padding:15px;
 
 border:none;
 
-border-radius:10px;
-
 outline:none;
 
-margin-top:10px;
+border-radius:20px;
+
+font-size:16px;
 
 }
 
+
+
+
+
 button{
 
-margin-top:20px;
+margin-top:25px;
 
-padding:12px 30px;
+padding:14px 35px;
 
 border:none;
 
 border-radius:30px;
 
-background:hotpink;
+background:
+
+linear-gradient(
+45deg,
+#ff1493,
+#ff69b4
+);
 
 color:white;
 
-font-size:18px;
+font-size:16px;
 
 cursor:pointer;
 
-transition:.4s;
+box-shadow:
+
+0 0 20px pink;
+
+transition:.3s;
 
 }
+
+
 
 button:hover{
 
@@ -195,10 +277,443 @@ transform:scale(1.1);
 
 }
 
-#wrong{
 
-color:red;
 
-margin-top:15px;
+
+
+
+
+/* =====================
+ GIFT BOX
+===================== */
+
+
+.gift{
+
+font-size:120px;
+
+cursor:pointer;
+
+animation:bounce 1.5s infinite;
+
+}
+
+
+
+@keyframes bounce{
+
+50%{
+
+transform:translateY(-25px);
+
+}
+
+}
+
+
+
+
+
+
+/* =====================
+ BIRTHDAY
+===================== */
+
+
+#birthday h1{
+
+font-size:45px;
+
+color:#ff8bd5;
+
+text-shadow:
+
+0 0 20px pink;
+
+}
+
+
+
+#birthday h2{
+
+font-size:35px;
+
+margin:20px;
+
+}
+
+
+
+
+
+
+/* Floating hearts */
+
+
+.heart{
+
+position:absolute;
+
+font-size:25px;
+
+animation:float 5s linear infinite;
+
+}
+
+
+
+@keyframes float{
+
+
+from{
+
+transform:translateY(100vh);
+
+opacity:1;
+
+}
+
+
+to{
+
+transform:translateY(-10vh);
+
+opacity:0;
+
+}
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+ LOVE LETTER
+===================== */
+
+
+.paper{
+
+
+background:#fff;
+
+color:#333;
+
+width:90%;
+
+max-width:450px;
+
+padding:35px;
+
+border-radius:20px;
+
+box-shadow:
+
+0 0 40px pink;
+
+font-size:18px;
+
+
+}
+
+
+
+#typing{
+
+margin-top:20px;
+
+line-height:1.6;
+
+}
+
+
+
+
+
+
+/* =====================
+ GALLERY
+===================== */
+
+
+.photos{
+
+display:flex;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+
+
+.photos img{
+
+
+width:90px;
+
+height:120px;
+
+object-fit:cover;
+
+border-radius:15px;
+
+transform:rotate(-5deg);
+
+box-shadow:
+
+0 0 20px pink;
+
+transition:.4s;
+
+
+}
+
+
+
+.photos img:hover{
+
+transform:scale(1.1) rotate(0deg);
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+ REASONS
+===================== */
+
+
+.reason{
+
+background:
+
+rgba(255,255,255,.15);
+
+padding:20px;
+
+margin:10px;
+
+border-radius:20px;
+
+width:90%;
+
+max-width:350px;
+
+animation:fade .8s;
+
+}
+
+
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+ STAR WISH
+===================== */
+
+
+.star{
+
+font-size:100px;
+
+cursor:pointer;
+
+animation:glow 1.5s infinite;
+
+}
+
+
+
+@keyframes glow{
+
+
+50%{
+
+filter:drop-shadow(
+0 0 30px yellow
+);
+
+}
+
+}
+
+
+
+
+
+
+
+/* =====================
+ MINI GAME
+===================== */
+
+
+#heartGame{
+
+font-size:60px;
+
+position:absolute;
+
+cursor:pointer;
+
+animation:moveHeart 3s infinite alternate;
+
+}
+
+
+
+@keyframes moveHeart{
+
+
+from{
+
+left:20%;
+
+top:40%;
+
+}
+
+
+to{
+
+left:70%;
+
+top:70%;
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================
+ FINAL
+===================== */
+
+
+#final h1{
+
+font-size:40px;
+
+color:pink;
+
+}
+
+
+
+#final p{
+
+font-size:20px;
+
+line-height:1.8;
+
+max-width:600px;
+
+}
+
+
+
+
+
+/* =====================
+ IPHONE RESPONSIVE
+===================== */
+
+
+@media(max-width:600px){
+
+
+
+#loading h1{
+
+font-size:20px;
+
+}
+
+
+#birthday h1{
+
+font-size:32px;
+
+}
+
+
+#birthday h2{
+
+font-size:25px;
+
+}
+
+
+.gift{
+
+font-size:90px;
+
+}
+
+
+
+.photos img{
+
+width:80px;
+
+height:110px;
+
+}
+
+
+
+#final h1{
+
+font-size:28px;
+
+}
+
+
+
+#final p{
+
+font-size:17px;
+
+}
+
+
 
 }
