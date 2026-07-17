@@ -13,7 +13,7 @@ function checkPassword() {
 
     let pass = document.getElementById("password").value;
 
-    if (pass === "19/05/2026") {
+    if (pass === "19052026") {
 
         alert("Welcome Birthday Boy ❤️");
 
