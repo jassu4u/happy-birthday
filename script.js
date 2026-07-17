@@ -1,14 +1,58 @@
 // =============================
-// LOADING SCREEN
+// ELEMENTS
 // =============================
+
+const loading = document.getElementById("loading");
+const passwordScreen = document.getElementById("passwordScreen");
+const giftScreen = document.getElementById("giftScreen");
+const birthday = document.getElementById("birthday");
+const letter = document.getElementById("letter");
+const gallery = document.getElementById("gallery");
+const reasons = document.getElementById("reasons");
+const wish = document.getElementById("wish");
+const game = document.getElementById("game");
+const final = document.getElementById("final");
+
+const music = document.getElementById("music");
+
+
+
+
+// =============================
+// SCREEN CHANGE FUNCTION
+// =============================
+
+function showScreen(screen){
+
+    document.querySelectorAll(".screen")
+    .forEach(section=>{
+
+        section.classList.remove("active");
+
+    });
+
+
+    screen.classList.add("active");
+
+}
+
+
+
+
+
+
+// =============================
+// LOADING
+// =============================
+
 
 setTimeout(()=>{
 
-    document.getElementById("loading").style.display="none";
+    showScreen(passwordScreen);
 
-    document.getElementById("passwordScreen").style.display="flex";
+},3500);
 
-},4000);
+
 
 
 
@@ -18,19 +62,23 @@ setTimeout(()=>{
 // PASSWORD
 // =============================
 
-function unlock(){
 
-let password =
-document.getElementById("password").value.trim();
-
-
-if(password==="19052026"){
+document
+.getElementById("unlockBtn")
+.addEventListener("click",()=>{
 
 
-document.getElementById("passwordScreen").style.display="none";
+let entered =
+document.getElementById("password")
+.value
+.trim();
 
 
-document.getElementById("giftScreen").style.display="flex";
+
+if(entered==="19052026"){
+
+
+showScreen(giftScreen);
 
 
 }
@@ -38,13 +86,16 @@ document.getElementById("giftScreen").style.display="flex";
 else{
 
 
-document.getElementById("error").innerHTML=
+document.getElementById("error")
+.innerHTML =
 "Wrong password 🥺 Try again ❤️";
 
 
 }
 
-}
+
+});
+
 
 
 
@@ -57,38 +108,28 @@ document.getElementById("error").innerHTML=
 // =============================
 
 
-function openGift(){
+document
+.getElementById("giftBox")
+.addEventListener("click",()=>{
 
 
-document.getElementById("giftScreen").style.display="none";
+// start music
 
-
-document.getElementById("birthday").style.display="flex";
-
-
-
-// Start music
-
-let music=document.getElementById("music");
-
-music.play();
+music.play()
+.catch(()=>{});
 
 
 
-// create hearts
+showScreen(birthday);
+
+
 
 createHearts();
 
+createSparkles();
 
 
-// fireworks
-
-fireworks();
-
-
-
-}
-
+});
 
 
 
@@ -98,32 +139,36 @@ fireworks();
 
 
 // =============================
-// FLOATING HEARTS
+// HEART EFFECT
 // =============================
 
 
 function createHearts(){
 
 
-setInterval(()=>{
+for(let i=0;i<15;i++){
 
 
-let heart=document.createElement("div");
-
-
-heart.className="heart";
+let heart =
+document.createElement("div");
 
 
 heart.innerHTML="❤️";
 
+heart.style.position="fixed";
 
 heart.style.left=
-Math.random()*100+"%";
+Math.random()*100+"vw";
 
 
-heart.style.animationDuration=
-(3+Math.random()*3)+"s";
+heart.style.bottom="0";
 
+
+heart.style.fontSize="25px";
+
+
+heart.style.animation=
+"float 4s linear";
 
 
 document.body.appendChild(heart);
@@ -134,12 +179,11 @@ setTimeout(()=>{
 
 heart.remove();
 
-},6000);
+},4000);
 
 
 
-},300);
-
+}
 
 
 }
@@ -150,58 +194,52 @@ heart.remove();
 
 
 
-
-
 // =============================
-// FIREWORKS EFFECT
+// SPARKLE FIREWORK
 // =============================
 
 
-function fireworks(){
+function createSparkles(){
 
 
-for(let i=0;i<30;i++){
+for(let i=0;i<20;i++){
 
 
-let fire=document.createElement("div");
+let sparkle =
+document.createElement("div");
 
 
-fire.innerHTML="✨";
+sparkle.innerHTML="✨";
 
 
-fire.style.position="absolute";
+sparkle.style.position="fixed";
+
+sparkle.style.left=
+Math.random()*100+"vw";
 
 
-fire.style.left=
-Math.random()*100+"%";
+sparkle.style.top=
+Math.random()*70+"vh";
 
 
-fire.style.top=
-Math.random()*80+"%";
+sparkle.style.fontSize="25px";
 
 
-fire.style.fontSize=
-20+Math.random()*30+"px";
-
-
-
-document.body.appendChild(fire);
+document.body.appendChild(sparkle);
 
 
 
 setTimeout(()=>{
 
-fire.remove();
+sparkle.remove();
 
-},2000);
-
-
-
-}
+},1500);
 
 
 }
 
+
+}
 
 
 
@@ -215,27 +253,27 @@ fire.remove();
 // =============================
 
 
-function showLetter(){
+document
+.getElementById("letterBtn")
+.addEventListener("click",()=>{
 
 
-document.getElementById("birthday").style.display="none";
-
-
-document.getElementById("letter").style.display="flex";
+showScreen(letter);
 
 
 
-let message=
-
+let message =
 `Happy Birthday Tarun ❤️
 
-I hope your day is filled with happiness, laughter and everything you love.
+I hope your day is filled with happiness, smiles and beautiful memories.
 
 Thank you for being my favourite person.
 
-You make ordinary moments special and I feel lucky to have you in my life.
+You make normal moments special and your presence means a lot to me.
 
-No matter the distance, you will always have a special place in my heart.
+Even when we are far away, you are always close to my heart.
+
+Keep smiling, keep chasing your dreams and always remember that someone is always cheering for you.
 
 I love you ❤️
 
@@ -243,38 +281,51 @@ I love you ❤️
 
 
 
-let index=0;
+typeText(message);
 
 
-let typing=
-document.getElementById("typing");
-
-typing.innerHTML="";
+});
 
 
 
-let interval=setInterval(()=>{
 
 
-typing.innerHTML += message[index];
+
+function typeText(text){
 
 
-index++;
+let box =
+document.getElementById("letterText");
 
 
-if(index>=message.length){
+box.innerHTML="";
 
-clearInterval(interval);
+
+let i=0;
+
+
+let typing =
+setInterval(()=>{
+
+
+box.innerHTML += text[i];
+
+
+i++;
+
+
+if(i>=text.length){
+
+clearInterval(typing);
 
 }
 
 
-},50);
+},40);
 
 
 
 }
-
 
 
 
@@ -288,16 +339,15 @@ clearInterval(interval);
 // =============================
 
 
-function showGallery(){
+document
+.getElementById("galleryBtn")
+.addEventListener("click",()=>{
 
 
-document.getElementById("letter").style.display="none";
+showScreen(gallery);
 
 
-document.getElementById("gallery").style.display="flex";
-
-
-}
+});
 
 
 
@@ -311,17 +361,15 @@ document.getElementById("gallery").style.display="flex";
 // =============================
 
 
-function showReasons(){
+document
+.getElementById("reasonBtn")
+.addEventListener("click",()=>{
 
 
-document.getElementById("gallery").style.display="none";
+showScreen(reasons);
 
 
-document.getElementById("reasons").style.display="flex";
-
-
-}
-
+});
 
 
 
@@ -331,34 +379,35 @@ document.getElementById("reasons").style.display="flex";
 
 
 // =============================
-// STAR WISH
+// WISH STAR
 // =============================
 
 
-function showStars(){
+document
+.getElementById("starBtn")
+.addEventListener("click",()=>{
 
 
-document.getElementById("reasons").style.display="none";
+showScreen(wish);
 
 
-document.getElementById("wish").style.display="flex";
-
-
-}
+});
 
 
 
 
-function wish(){
+document
+.getElementById("wishStar")
+.addEventListener("click",()=>{
 
 
-document.getElementById("wishText").innerHTML=
+document.getElementById("wishMessage")
+.innerHTML =
 
-"I wish your dreams come true ✨❤️";
+"✨ I wish all your dreams come true, Tarun ❤️";
 
 
-}
-
+});
 
 
 
@@ -372,47 +421,582 @@ document.getElementById("wishText").innerHTML=
 // =============================
 
 
-let score=0;
+let score = 0;
 
 
-let heart=
-document.getElementById("heartGame");
+const heart =
+document.getElementById("catchHeart");
 
 
 
-heart.onclick=function(){
+document
+.getElementById("gameBtn")
+.addEventListener("click",()=>{
+
+
+score=0;
+
+document.getElementById("score")
+.innerHTML="0";
+
+
+showScreen(game);
+
+
+moveHeart();
+
+
+});
+
+
+
+
+
+
+heart.addEventListener("click",()=>{
 
 
 score++;
 
 
-document.getElementById("score").innerHTML=score;
+document.getElementById("score")
+.innerHTML=score;
 
 
 
-heart.style.left=
-Math.random()*80+"%";
-
-
-heart.style.top=
-Math.random()*70+"%";
+moveHeart();
 
 
 
 if(score>=10){
 
 
-document.getElementById("game").style.display="none";
+showScreen(final);
 
 
-document.getElementById("final").style.display="flex";
+createSparkles();
 
 
-fireworks();
+}
+
+
+
+});
+
+
+
+
+
+function moveHeart(){
+
+
+heart.style.left =
+Math.random()*70 + 10 + "%";
+
+
+heart.style.top =
+Math.random()*60 + 20 + "%";
+
+
+}
+// =============================
+// ELEMENTS
+// =============================
+
+const loading = document.getElementById("loading");
+const passwordScreen = document.getElementById("passwordScreen");
+const giftScreen = document.getElementById("giftScreen");
+const birthday = document.getElementById("birthday");
+const letter = document.getElementById("letter");
+const gallery = document.getElementById("gallery");
+const reasons = document.getElementById("reasons");
+const wish = document.getElementById("wish");
+const game = document.getElementById("game");
+const final = document.getElementById("final");
+
+const music = document.getElementById("music");
+
+
+
+
+// =============================
+// SCREEN CHANGE FUNCTION
+// =============================
+
+function showScreen(screen){
+
+    document.querySelectorAll(".screen")
+    .forEach(section=>{
+
+        section.classList.remove("active");
+
+    });
+
+
+    screen.classList.add("active");
+
+}
+
+
+
+
+
+
+// =============================
+// LOADING
+// =============================
+
+
+setTimeout(()=>{
+
+    showScreen(passwordScreen);
+
+},3500);
+
+
+
+
+
+
+
+// =============================
+// PASSWORD
+// =============================
+
+
+document
+.getElementById("unlockBtn")
+.addEventListener("click",()=>{
+
+
+let entered =
+document.getElementById("password")
+.value
+.trim();
+
+
+
+if(entered==="19052026"){
+
+
+showScreen(giftScreen);
+
+
+}
+
+else{
+
+
+document.getElementById("error")
+.innerHTML =
+"Wrong password 🥺 Try again ❤️";
+
+
+}
+
+
+});
+
+
+
+
+
+
+
+
+// =============================
+// GIFT OPEN
+// =============================
+
+
+document
+.getElementById("giftBox")
+.addEventListener("click",()=>{
+
+
+// start music
+
+music.play()
+.catch(()=>{});
+
+
+
+showScreen(birthday);
+
+
+
+createHearts();
+
+createSparkles();
+
+
+});
+
+
+
+
+
+
+
+
+// =============================
+// HEART EFFECT
+// =============================
+
+
+function createHearts(){
+
+
+for(let i=0;i<15;i++){
+
+
+let heart =
+document.createElement("div");
+
+
+heart.innerHTML="❤️";
+
+heart.style.position="fixed";
+
+heart.style.left=
+Math.random()*100+"vw";
+
+
+heart.style.bottom="0";
+
+
+heart.style.fontSize="25px";
+
+
+heart.style.animation=
+"float 4s linear";
+
+
+document.body.appendChild(heart);
+
+
+
+setTimeout(()=>{
+
+heart.remove();
+
+},4000);
 
 
 
 }
 
 
-};
+}
+
+
+
+
+
+
+
+// =============================
+// SPARKLE FIREWORK
+// =============================
+
+
+function createSparkles(){
+
+
+for(let i=0;i<20;i++){
+
+
+let sparkle =
+document.createElement("div");
+
+
+sparkle.innerHTML="✨";
+
+
+sparkle.style.position="fixed";
+
+sparkle.style.left=
+Math.random()*100+"vw";
+
+
+sparkle.style.top=
+Math.random()*70+"vh";
+
+
+sparkle.style.fontSize="25px";
+
+
+document.body.appendChild(sparkle);
+
+
+
+setTimeout(()=>{
+
+sparkle.remove();
+
+},1500);
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+// =============================
+// LOVE LETTER
+// =============================
+
+
+document
+.getElementById("letterBtn")
+.addEventListener("click",()=>{
+
+
+showScreen(letter);
+
+
+
+let message =
+`Happy Birthday Tarun ❤️
+
+I hope your day is filled with happiness, smiles and beautiful memories.
+
+Thank you for being my favourite person.
+
+You make normal moments special and your presence means a lot to me.
+
+Even when we are far away, you are always close to my heart.
+
+Keep smiling, keep chasing your dreams and always remember that someone is always cheering for you.
+
+I love you ❤️
+
+- Jassu`;
+
+
+
+typeText(message);
+
+
+});
+
+
+
+
+
+
+function typeText(text){
+
+
+let box =
+document.getElementById("letterText");
+
+
+box.innerHTML="";
+
+
+let i=0;
+
+
+let typing =
+setInterval(()=>{
+
+
+box.innerHTML += text[i];
+
+
+i++;
+
+
+if(i>=text.length){
+
+clearInterval(typing);
+
+}
+
+
+},40);
+
+
+
+}
+
+
+
+
+
+
+
+
+// =============================
+// GALLERY
+// =============================
+
+
+document
+.getElementById("galleryBtn")
+.addEventListener("click",()=>{
+
+
+showScreen(gallery);
+
+
+});
+
+
+
+
+
+
+
+
+// =============================
+// REASONS
+// =============================
+
+
+document
+.getElementById("reasonBtn")
+.addEventListener("click",()=>{
+
+
+showScreen(reasons);
+
+
+});
+
+
+
+
+
+
+
+
+// =============================
+// WISH STAR
+// =============================
+
+
+document
+.getElementById("starBtn")
+.addEventListener("click",()=>{
+
+
+showScreen(wish);
+
+
+});
+
+
+
+
+document
+.getElementById("wishStar")
+.addEventListener("click",()=>{
+
+
+document.getElementById("wishMessage")
+.innerHTML =
+
+"✨ I wish all your dreams come true, Tarun ❤️";
+
+
+});
+
+
+
+
+
+
+
+
+// =============================
+// MINI GAME
+// =============================
+
+
+let score = 0;
+
+
+const heart =
+document.getElementById("catchHeart");
+
+
+
+document
+.getElementById("gameBtn")
+.addEventListener("click",()=>{
+
+
+score=0;
+
+document.getElementById("score")
+.innerHTML="0";
+
+
+showScreen(game);
+
+
+moveHeart();
+
+
+});
+
+
+
+
+
+
+heart.addEventListener("click",()=>{
+
+
+score++;
+
+
+document.getElementById("score")
+.innerHTML=score;
+
+
+
+moveHeart();
+
+
+
+if(score>=10){
+
+
+showScreen(final);
+
+
+createSparkles();
+
+
+}
+
+
+
+});
+
+
+
+
+
+function moveHeart(){
+
+
+heart.style.left =
+Math.random()*70 + 10 + "%";
+
+
+heart.style.top =
+Math.random()*60 + 20 + "%";
+
+
+}
