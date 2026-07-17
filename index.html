@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday ❤️</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+    <div id="stars"></div>
+
+    <!-- Loading Screen -->
+    <section id="loading">
+
+        <h1>Preparing Something Special...</h1>
+
+        <div class="loader">
+
+            <div class="progress"></div>
+
+        </div>
+
+    </section>
+
+    <!-- Password Screen -->
+    <section id="passwordScreen">
+
+        <div class="glass">
+
+            <h2>❤️ Birthday Surprise ❤️</h2>
+
+            <p>Only the Birthday Boy Can Enter</p>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter Password">
+
+            <button onclick="checkPassword()">
+
+                Unlock ❤️
+
+            </button>
+
+            <p id="wrong"></p>
+
+        </div>
+
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
