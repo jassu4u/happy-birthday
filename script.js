@@ -2,7 +2,8 @@
 // ELEMENTS
 // =============================
 
-const loading = document.getElementById("loading");
+const screens = document.querySelectorAll(".screen");
+
 const passwordScreen = document.getElementById("passwordScreen");
 const giftScreen = document.getElementById("giftScreen");
 const birthday = document.getElementById("birthday");
@@ -19,18 +20,14 @@ const music = document.getElementById("music");
 
 
 // =============================
-// SCREEN CHANGE FUNCTION
+// SCREEN CHANGE
 // =============================
 
 function showScreen(screen){
 
-    document.querySelectorAll(".screen")
-    .forEach(section=>{
-
-        section.classList.remove("active");
-
+    screens.forEach(item=>{
+        item.classList.remove("active");
     });
-
 
     screen.classList.add("active");
 
@@ -40,11 +37,9 @@ function showScreen(screen){
 
 
 
-
 // =============================
 // LOADING
 // =============================
-
 
 setTimeout(()=>{
 
@@ -62,34 +57,27 @@ setTimeout(()=>{
 // PASSWORD
 // =============================
 
-
-document
-.getElementById("unlockBtn")
-.addEventListener("click",()=>{
+const unlockBtn =
+document.getElementById("unlockBtn");
 
 
-let entered =
-document.getElementById("password")
-.value
-.trim();
+unlockBtn.addEventListener("click",()=>{
 
 
+const password =
+document.getElementById("password").value.trim();
 
-if(entered==="19052026"){
 
+if(password === "19052026"){
 
-showScreen(giftScreen);
-
+    showScreen(giftScreen);
 
 }
 
 else{
 
-
-document.getElementById("error")
-.innerHTML =
+document.getElementById("error").innerHTML =
 "Wrong password 🥺 Try again ❤️";
-
 
 }
 
@@ -113,15 +101,10 @@ document
 .addEventListener("click",()=>{
 
 
-// start music
-
-music.play()
-.catch(()=>{});
-
+music.play().catch(()=>{});
 
 
 showScreen(birthday);
-
 
 
 createHearts();
@@ -138,36 +121,42 @@ createSparkles();
 
 
 
+
 // =============================
-// HEART EFFECT
+// FLOATING HEARTS
 // =============================
 
 
 function createHearts(){
 
 
-for(let i=0;i<15;i++){
+for(let i=0;i<20;i++){
 
 
-let heart =
+const heart =
 document.createElement("div");
 
 
 heart.innerHTML="❤️";
 
+
 heart.style.position="fixed";
 
-heart.style.left=
+heart.style.left =
 Math.random()*100+"vw";
 
 
 heart.style.bottom="0";
 
 
-heart.style.fontSize="25px";
+heart.style.fontSize =
+Math.random()*20+20+"px";
 
 
-heart.style.animation=
+heart.style.zIndex="10";
+
+
+heart.style.animation =
 "float 4s linear";
 
 
@@ -194,18 +183,21 @@ heart.remove();
 
 
 
+
+
+
 // =============================
-// SPARKLE FIREWORK
+// SPARKLES
 // =============================
 
 
 function createSparkles(){
 
 
-for(let i=0;i<20;i++){
+for(let i=0;i<25;i++){
 
 
-let sparkle =
+const sparkle =
 document.createElement("div");
 
 
@@ -214,15 +206,19 @@ sparkle.innerHTML="✨";
 
 sparkle.style.position="fixed";
 
-sparkle.style.left=
+
+sparkle.style.left =
 Math.random()*100+"vw";
 
 
-sparkle.style.top=
-Math.random()*70+"vh";
+sparkle.style.top =
+Math.random()*80+"vh";
 
 
 sparkle.style.fontSize="25px";
+
+
+sparkle.style.zIndex="10";
 
 
 document.body.appendChild(sparkle);
@@ -248,9 +244,14 @@ sparkle.remove();
 
 
 
+
+
 // =============================
-// LOVE LETTER
+// LETTER
 // =============================
+
+
+let typingTimer;
 
 
 document
@@ -262,8 +263,7 @@ showScreen(letter);
 
 
 
-let message =
-`Happy Birthday Tarun ❤️
+const message = `Happy Birthday Tarun ❤️
 
 I hope your day is filled with happiness, smiles and beautiful memories.
 
@@ -273,7 +273,7 @@ You make normal moments special and your presence means a lot to me.
 
 Even when we are far away, you are always close to my heart.
 
-Keep smiling, keep chasing your dreams and always remember that someone is always cheering for you.
+Keep smiling, keep chasing your dreams and always remember someone is always cheering for you.
 
 I love you ❤️
 
@@ -290,42 +290,44 @@ typeText(message);
 
 
 
-
 function typeText(text){
 
 
-let box =
+const box =
 document.getElementById("letterText");
 
 
 box.innerHTML="";
 
 
-let i=0;
+clearInterval(typingTimer);
 
 
-let typing =
+let index=0;
+
+
+typingTimer =
 setInterval(()=>{
 
 
-box.innerHTML += text[i];
+box.innerHTML += text[index];
 
 
-i++;
+index++;
 
 
-if(i>=text.length){
+if(index >= text.length){
 
-clearInterval(typing);
+clearInterval(typingTimer);
+
+}
+
+
+},45);
+
 
 }
 
-
-},40);
-
-
-
-}
 
 
 
@@ -335,7 +337,7 @@ clearInterval(typing);
 
 
 // =============================
-// GALLERY
+// NAVIGATION BUTTONS
 // =============================
 
 
@@ -343,33 +345,30 @@ document
 .getElementById("galleryBtn")
 .addEventListener("click",()=>{
 
-
 showScreen(gallery);
-
 
 });
 
-
-
-
-
-
-
-
-// =============================
-// REASONS
-// =============================
 
 
 document
 .getElementById("reasonBtn")
 .addEventListener("click",()=>{
 
-
 showScreen(reasons);
 
+});
+
+
+
+document
+.getElementById("starBtn")
+.addEventListener("click",()=>{
+
+showScreen(wish);
 
 });
+
 
 
 
@@ -384,30 +383,20 @@ showScreen(reasons);
 
 
 document
-.getElementById("starBtn")
-.addEventListener("click",()=>{
-
-
-showScreen(wish);
-
-
-});
-
-
-
-
-document
 .getElementById("wishStar")
 .addEventListener("click",()=>{
 
 
 document.getElementById("wishMessage")
 .innerHTML =
-
 "✨ I wish all your dreams come true, Tarun ❤️";
 
 
+createSparkles();
+
+
 });
+
 
 
 
@@ -417,7 +406,7 @@ document.getElementById("wishMessage")
 
 
 // =============================
-// MINI GAME
+// GAME
 // =============================
 
 
@@ -428,6 +417,16 @@ const heart =
 document.getElementById("catchHeart");
 
 
+const scoreText =
+document.getElementById("score");
+
+
+const gameArea =
+document.getElementById("gameArea");
+
+
+
+
 
 document
 .getElementById("gameBtn")
@@ -436,8 +435,8 @@ document
 
 score=0;
 
-document.getElementById("score")
-.innerHTML="0";
+
+scoreText.innerHTML="0";
 
 
 showScreen(game);
@@ -453,22 +452,46 @@ moveHeart();
 
 
 
-heart.addEventListener("click",()=>{
+
+function moveHeart(){
+
+
+const maxX =
+gameArea.clientWidth - 70;
+
+
+const maxY =
+gameArea.clientHeight - 70;
+
+
+
+heart.style.left =
+Math.random()*maxX+"px";
+
+
+heart.style.top =
+Math.random()*maxY+"px";
+
+
+}
+
+
+
+
+
+
+
+function catchHeart(){
 
 
 score++;
 
 
-document.getElementById("score")
-.innerHTML=score;
+scoreText.innerHTML=score;
 
 
 
-moveHeart();
-
-
-
-if(score>=10){
+if(score >= 10){
 
 
 showScreen(final);
@@ -477,526 +500,32 @@ showScreen(final);
 createSparkles();
 
 
-}
-
-
-
-});
-
-
-
-
-
-function moveHeart(){
-
-
-heart.style.left =
-Math.random()*70 + 10 + "%";
-
-
-heart.style.top =
-Math.random()*60 + 20 + "%";
+return;
 
 
 }
-// =============================
-// ELEMENTS
-// =============================
-
-const loading = document.getElementById("loading");
-const passwordScreen = document.getElementById("passwordScreen");
-const giftScreen = document.getElementById("giftScreen");
-const birthday = document.getElementById("birthday");
-const letter = document.getElementById("letter");
-const gallery = document.getElementById("gallery");
-const reasons = document.getElementById("reasons");
-const wish = document.getElementById("wish");
-const game = document.getElementById("game");
-const final = document.getElementById("final");
-
-const music = document.getElementById("music");
-
-
-
-
-// =============================
-// SCREEN CHANGE FUNCTION
-// =============================
-
-function showScreen(screen){
-
-    document.querySelectorAll(".screen")
-    .forEach(section=>{
-
-        section.classList.remove("active");
-
-    });
-
-
-    screen.classList.add("active");
-
-}
-
-
-
-
-
-
-// =============================
-// LOADING
-// =============================
-
-
-setTimeout(()=>{
-
-    showScreen(passwordScreen);
-
-},3500);
-
-
-
-
-
-
-
-// =============================
-// PASSWORD
-// =============================
-
-
-document
-.getElementById("unlockBtn")
-.addEventListener("click",()=>{
-
-
-let entered =
-document.getElementById("password")
-.value
-.trim();
-
-
-
-if(entered==="19052026"){
-
-
-showScreen(giftScreen);
-
-
-}
-
-else{
-
-
-document.getElementById("error")
-.innerHTML =
-"Wrong password 🥺 Try again ❤️";
-
-
-}
-
-
-});
-
-
-
-
-
-
-
-
-// =============================
-// GIFT OPEN
-// =============================
-
-
-document
-.getElementById("giftBox")
-.addEventListener("click",()=>{
-
-
-// start music
-
-music.play()
-.catch(()=>{});
-
-
-
-showScreen(birthday);
-
-
-
-createHearts();
-
-createSparkles();
-
-
-});
-
-
-
-
-
-
-
-
-// =============================
-// HEART EFFECT
-// =============================
-
-
-function createHearts(){
-
-
-for(let i=0;i<15;i++){
-
-
-let heart =
-document.createElement("div");
-
-
-heart.innerHTML="❤️";
-
-heart.style.position="fixed";
-
-heart.style.left=
-Math.random()*100+"vw";
-
-
-heart.style.bottom="0";
-
-
-heart.style.fontSize="25px";
-
-
-heart.style.animation=
-"float 4s linear";
-
-
-document.body.appendChild(heart);
-
-
-
-setTimeout(()=>{
-
-heart.remove();
-
-},4000);
-
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-// =============================
-// SPARKLE FIREWORK
-// =============================
-
-
-function createSparkles(){
-
-
-for(let i=0;i<20;i++){
-
-
-let sparkle =
-document.createElement("div");
-
-
-sparkle.innerHTML="✨";
-
-
-sparkle.style.position="fixed";
-
-sparkle.style.left=
-Math.random()*100+"vw";
-
-
-sparkle.style.top=
-Math.random()*70+"vh";
-
-
-sparkle.style.fontSize="25px";
-
-
-document.body.appendChild(sparkle);
-
-
-
-setTimeout(()=>{
-
-sparkle.remove();
-
-},1500);
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-
-// =============================
-// LOVE LETTER
-// =============================
-
-
-document
-.getElementById("letterBtn")
-.addEventListener("click",()=>{
-
-
-showScreen(letter);
-
-
-
-let message =
-`Happy Birthday Tarun ❤️
-
-I hope your day is filled with happiness, smiles and beautiful memories.
-
-Thank you for being my favourite person.
-
-You make normal moments special and your presence means a lot to me.
-
-Even when we are far away, you are always close to my heart.
-
-Keep smiling, keep chasing your dreams and always remember that someone is always cheering for you.
-
-I love you ❤️
-
-- Jassu`;
-
-
-
-typeText(message);
-
-
-});
-
-
-
-
-
-
-function typeText(text){
-
-
-let box =
-document.getElementById("letterText");
-
-
-box.innerHTML="";
-
-
-let i=0;
-
-
-let typing =
-setInterval(()=>{
-
-
-box.innerHTML += text[i];
-
-
-i++;
-
-
-if(i>=text.length){
-
-clearInterval(typing);
-
-}
-
-
-},40);
-
-
-
-}
-
-
-
-
-
-
-
-
-// =============================
-// GALLERY
-// =============================
-
-
-document
-.getElementById("galleryBtn")
-.addEventListener("click",()=>{
-
-
-showScreen(gallery);
-
-
-});
-
-
-
-
-
-
-
-
-// =============================
-// REASONS
-// =============================
-
-
-document
-.getElementById("reasonBtn")
-.addEventListener("click",()=>{
-
-
-showScreen(reasons);
-
-
-});
-
-
-
-
-
-
-
-
-// =============================
-// WISH STAR
-// =============================
-
-
-document
-.getElementById("starBtn")
-.addEventListener("click",()=>{
-
-
-showScreen(wish);
-
-
-});
-
-
-
-
-document
-.getElementById("wishStar")
-.addEventListener("click",()=>{
-
-
-document.getElementById("wishMessage")
-.innerHTML =
-
-"✨ I wish all your dreams come true, Tarun ❤️";
-
-
-});
-
-
-
-
-
-
-
-
-// =============================
-// MINI GAME
-// =============================
-
-
-let score = 0;
-
-
-const heart =
-document.getElementById("catchHeart");
-
-
-
-document
-.getElementById("gameBtn")
-.addEventListener("click",()=>{
-
-
-score=0;
-
-document.getElementById("score")
-.innerHTML="0";
-
-
-showScreen(game);
-
-
-moveHeart();
-
-
-});
-
-
-
-
-
-
-heart.addEventListener("click",()=>{
-
-
-score++;
-
-
-document.getElementById("score")
-.innerHTML=score;
 
 
 
 moveHeart();
 
 
-
-if(score>=10){
-
-
-showScreen(final);
-
-
-createSparkles();
-
-
 }
 
 
+
+
+
+
+
+heart.addEventListener("click",catchHeart);
+
+
+
+heart.addEventListener("touchstart",(e)=>{
+
+e.preventDefault();
+
+catchHeart();
 
 });
-
-
-
-
-
-function moveHeart(){
-
-
-heart.style.left =
-Math.random()*70 + 10 + "%";
-
-
-heart.style.top =
-Math.random()*60 + 20 + "%";
-
-
-}
