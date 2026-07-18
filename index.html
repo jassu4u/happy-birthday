@@ -5,9 +5,14 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <title>Happy Birthday Tarun ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
@@ -17,15 +22,15 @@
 <body>
 
 
-<!-- Background -->
+<!-- Background Stars -->
 <div class="stars"></div>
 
 
 
-<!-- MUSIC -->
+<!-- Music -->
 
-<audio id="music" loop>
-    <source src="assets/music/birthday.mp3" type="audio/mp3">
+<audio id="music" loop preload="auto">
+    <source src="assets/music/birthday.mp3" type="audio/mpeg">
 </audio>
 
 
@@ -35,7 +40,6 @@
 <!-- LOADING SCREEN -->
 
 <section id="loading" class="screen active">
-
 
 <div class="loading-box">
 
@@ -56,7 +60,6 @@ For Tarun ✨
 
 
 </div>
-
 
 </section>
 
@@ -86,15 +89,14 @@ Only Tarun can unlock this ❤️
 
 
 <input 
-type="password"
 id="password"
-placeholder="Secret password">
+type="password"
+placeholder="Enter secret password"
+autocomplete="off">
 
 
 <button id="unlockBtn">
-
 Unlock 💖
-
 </button>
 
 
@@ -105,6 +107,7 @@ Unlock 💖
 
 
 </section>
+
 
 
 
@@ -126,9 +129,7 @@ You unlocked it 🥳
 
 <div id="giftBox">
 
-
 🎁
-
 
 </div>
 
@@ -147,13 +148,12 @@ Tap the gift box ❤️
 
 
 
+
+
 <!-- BIRTHDAY REVEAL -->
 
 
 <section id="birthday" class="screen">
-
-
-<div class="firework-area"></div>
 
 
 <h1 class="birthday-title">
@@ -164,17 +164,12 @@ Tap the gift box ❤️
 
 
 <h2>
-
 My Love Tarun ❤️
-
 </h2>
 
 
-
 <p>
-
 From your Jassu 💕
-
 </p>
 
 
@@ -213,6 +208,7 @@ Dear Tarun ❤️
 <p id="letterText"></p>
 
 
+
 <button id="galleryBtn">
 
 Our Memories 📸
@@ -233,7 +229,7 @@ Our Memories 📸
 
 
 
-<!-- MEMORY GALLERY -->
+<!-- GALLERY -->
 
 
 <section id="gallery" class="screen">
@@ -244,19 +240,17 @@ Our Memories ❤️
 </h1>
 
 
-
 <div class="gallery">
 
 
-<img src="assets/photos/photo1.jpg" alt="memory">
+<img src="assets/photos/photo1.jpg" alt="Memory 1">
 
-<img src="assets/photos/photo2.jpg" alt="memory">
+<img src="assets/photos/photo2.jpg" alt="Memory 2">
 
-<img src="assets/photos/photo3.jpg" alt="memory">
+<img src="assets/photos/photo3.jpg" alt="Memory 3">
 
 
 </div>
-
 
 
 <button id="reasonBtn">
@@ -283,41 +277,28 @@ Reasons I Love You ❤️
 
 
 <h1>
-
 Why I Love You ❤️
-
 </h1>
 
 
 
 <div class="reason-card">
-
 Your smile makes my worst days better 😊
-
 </div>
 
 
-
 <div class="reason-card">
-
 Your care makes me feel special 🥹
-
 </div>
 
 
-
 <div class="reason-card">
-
 Your silly moments make me laugh 😂
-
 </div>
 
 
-
 <div class="reason-card">
-
 Because you are my Tarun ❤️
-
 </div>
 
 
@@ -339,18 +320,15 @@ Make A Wish ⭐
 
 
 
-<!-- WISH STAR -->
+<!-- WISH -->
 
 
 <section id="wish" class="screen">
 
 
 <h1>
-
 Choose your lucky star ✨
-
 </h1>
-
 
 
 <div id="wishStar">
@@ -360,9 +338,7 @@ Choose your lucky star ✨
 </div>
 
 
-
 <p id="wishMessage"></p>
-
 
 
 <button id="gameBtn">
@@ -370,7 +346,6 @@ Choose your lucky star ✨
 Play A Game 🎮
 
 </button>
-
 
 
 </section>
@@ -383,16 +358,14 @@ Play A Game 🎮
 
 
 
-<!-- MINI GAME -->
+<!-- GAME -->
 
 
 <section id="game" class="screen">
 
 
 <h1>
-
 Catch Hearts ❤️
-
 </h1>
 
 
@@ -401,13 +374,14 @@ Catch Hearts ❤️
 Score:
 
 <span id="score">
-
 0
-
 </span>
 
 </h2>
 
+
+
+<div id="gameArea">
 
 
 <div id="catchHeart">
@@ -417,11 +391,16 @@ Score:
 </div>
 
 
+</div>
+
+
+
 <p>
 
 Catch 10 hearts to unlock your surprise 🎁
 
 </p>
+
 
 
 </section>
@@ -459,22 +438,17 @@ you will always be someone very special to me.
 
 <br><br>
 
-
 Thank you for all the smiles, memories and happiness.
 
 <br><br>
-
 
 I hope your life is always filled with success and love.
 
 <br><br>
 
-
 Happy Birthday my favourite person ❤️
 
-
 <br><br>
-
 
 Forever yours,
 
@@ -489,7 +463,6 @@ Jassu 💕
 
 
 </section>
-
 
 
 
