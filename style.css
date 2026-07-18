@@ -2,52 +2,69 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:"Poppins","Segoe UI",sans-serif;
+    font-family:"Poppins",sans-serif;
 }
 
 
-html,body{
+:root{
+    --pink:#ff4fa3;
+    --light-pink:#ffb6dd;
+    --dark:#080014;
+}
 
-width:100%;
-height:100%;
 
-overflow:hidden;
+html,
+body{
 
-background:#080014;
+    width:100%;
+    min-height:100%;
+    overflow:hidden;
 
-color:white;
+    background:var(--dark);
+    color:white;
 
 }
+
+
+
+button,
+input{
+
+    font-family:inherit;
+
+}
+
 
 
 
 /* =========================
-   COMMON SCREEN STYLE
+COMMON SCREEN
 ========================= */
 
 
 .screen{
 
-position:absolute;
+    position:absolute;
 
-top:0;
-left:0;
+    inset:0;
 
-width:100%;
-height:100vh;
+    width:100%;
+    height:100dvh;
 
-display:none;
+    display:none;
 
-justify-content:center;
-align-items:center;
+    justify-content:center;
+    align-items:center;
 
-flex-direction:column;
+    flex-direction:column;
 
-text-align:center;
+    text-align:center;
 
-padding:20px;
+    padding:20px;
 
-z-index:2;
+    z-index:5;
+
+    overflow:hidden;
 
 }
 
@@ -55,7 +72,31 @@ z-index:2;
 
 .screen.active{
 
-display:flex;
+    display:flex;
+
+    animation:fadeIn .8s ease;
+
+}
+
+
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:scale(.96);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
 
 }
 
@@ -63,8 +104,10 @@ display:flex;
 
 
 
+
+
 /* =========================
-   STAR BACKGROUND
+BACKGROUND
 ========================= */
 
 
@@ -72,24 +115,25 @@ display:flex;
 
 position:fixed;
 
-width:100%;
-height:100%;
+inset:0;
 
 background:
 
-radial-gradient(circle,white 1px,transparent 1px);
+radial-gradient(circle,rgba(255,255,255,.9) 1px,transparent 1px);
 
 background-size:45px 45px;
 
-opacity:.35;
+opacity:.25;
 
-animation:moveStars 40s linear infinite;
+animation:starsMove 35s linear infinite;
+
+z-index:1;
 
 }
 
 
 
-@keyframes moveStars{
+@keyframes starsMove{
 
 from{
 
@@ -111,22 +155,15 @@ transform:translateY(-200px);
 
 
 
+
 /* =========================
- LOADING
+LOADING
 ========================= */
-
-
-#loading{
-
-background:#050008;
-
-}
-
 
 
 .loading-box h1{
 
-font-size:24px;
+font-size:clamp(20px,4vw,30px);
 
 }
 
@@ -134,9 +171,9 @@ font-size:24px;
 
 .loading-box p{
 
-margin-top:10px;
+margin-top:12px;
 
-color:#ff9edc;
+color:var(--light-pink);
 
 }
 
@@ -144,17 +181,17 @@ color:#ff9edc;
 
 .loader{
 
-width:260px;
+width:min(280px,80vw);
 
-height:8px;
+height:9px;
 
-background:#222;
+background:#252025;
 
-border-radius:20px;
-
-overflow:hidden;
+border-radius:30px;
 
 margin-top:30px;
+
+overflow:hidden;
 
 }
 
@@ -166,19 +203,15 @@ height:100%;
 
 width:0;
 
-background:linear-gradient(
-90deg,
-#ff1493,
-#ffc0cb
-);
+background:linear-gradient(90deg,#ff1493,#ffd1ea);
 
-animation:loading 3.5s forwards;
+animation:load 3.5s forwards;
 
 }
 
 
 
-@keyframes loading{
+@keyframes load{
 
 to{
 
@@ -195,19 +228,19 @@ width:100%;
 
 
 
+
 /* =========================
- GLASS CARD
+GLASS CARD
 ========================= */
 
 
 .glass-card{
 
-
-width:90%;
-
-max-width:380px;
+width:min(90%,400px);
 
 padding:35px 25px;
+
+border-radius:30px;
 
 
 background:
@@ -217,13 +250,12 @@ rgba(255,255,255,.12);
 
 backdrop-filter:blur(20px);
 
-
-border-radius:25px;
+-webkit-backdrop-filter:blur(20px);
 
 
 box-shadow:
 
-0 0 30px rgba(255,20,147,.4);
+0 0 40px rgba(255,20,147,.35);
 
 
 }
@@ -232,7 +264,7 @@ box-shadow:
 
 .glass-card h1{
 
-font-size:28px;
+font-size:clamp(24px,6vw,32px);
 
 }
 
@@ -240,7 +272,7 @@ font-size:28px;
 
 .glass-card p{
 
-margin:20px 0;
+margin:18px 0;
 
 }
 
@@ -248,19 +280,25 @@ margin:20px 0;
 
 input{
 
-
 width:100%;
 
-padding:15px;
-
-border-radius:25px;
+padding:15px 20px;
 
 border:none;
 
 outline:none;
 
+border-radius:30px;
+
 font-size:16px;
 
+}
+
+
+
+#error{
+
+color:#ff9ebd;
 
 }
 
@@ -271,23 +309,17 @@ font-size:16px;
 
 button{
 
-
 margin-top:25px;
 
 padding:14px 35px;
 
 border:none;
 
-border-radius:30px;
+border-radius:40px;
 
 background:
 
-linear-gradient(
-45deg,
-#ff1493,
-#ff69b4
-);
-
+linear-gradient(45deg,#ff1493,#ff69b4);
 
 color:white;
 
@@ -295,14 +327,17 @@ font-size:16px;
 
 cursor:pointer;
 
-
-box-shadow:
-
-0 0 20px pink;
-
+box-shadow:0 0 20px #ff69b4;
 
 transition:.3s;
 
+}
+
+
+
+button:hover{
+
+transform:translateY(-3px);
 
 }
 
@@ -310,9 +345,10 @@ transition:.3s;
 
 button:active{
 
-transform:scale(.95);
+transform:scale(.94);
 
 }
+
 
 
 
@@ -322,28 +358,23 @@ transform:scale(.95);
 
 
 /* =========================
- GIFT
+GIFT
 ========================= */
 
 
 #giftBox{
 
-
-font-size:110px;
+font-size:clamp(80px,20vw,120px);
 
 cursor:pointer;
 
-
 animation:bounce 1.5s infinite;
-
 
 }
 
 
 
-
 @keyframes bounce{
-
 
 50%{
 
@@ -360,41 +391,19 @@ transform:translateY(-25px);
 
 
 
+
 /* =========================
- BIRTHDAY
+BIRTHDAY
 ========================= */
 
 
 .birthday-title{
 
-
-font-size:45px;
+font-size:clamp(30px,7vw,55px);
 
 color:#ff9de2;
 
-
-text-shadow:
-
-0 0 20px pink;
-
-
-animation:zoom 1s;
-
-
-}
-
-
-
-@keyframes zoom{
-
-from{
-
-transform:scale(.5);
-
-opacity:0;
-
-}
-
+text-shadow:0 0 25px pink;
 
 }
 
@@ -402,7 +411,7 @@ opacity:0;
 
 #birthday h2{
 
-font-size:32px;
+font-size:clamp(24px,5vw,35px);
 
 margin:20px;
 
@@ -415,36 +424,32 @@ margin:20px;
 
 
 
+
+
 /* =========================
- LETTER
+LETTER
 ========================= */
 
 
 .letter-paper{
 
+width:min(90%,450px);
 
-background:#fff;
+max-height:75vh;
 
-color:#333;
-
-width:90%;
-
-max-width:430px;
+overflow:auto;
 
 padding:30px;
 
-border-radius:20px;
+border-radius:25px;
 
+background:white;
 
-box-shadow:
+color:#333;
 
-0 0 30px pink;
+box-shadow:0 0 40px pink;
 
-
-font-size:17px;
-
-line-height:1.6;
-
+line-height:1.7;
 
 }
 
@@ -466,21 +471,21 @@ white-space:pre-line;
 
 
 
+
 /* =========================
- GALLERY
+GALLERY
 ========================= */
 
 
 .gallery{
 
+display:grid;
 
-display:flex;
+grid-template-columns:repeat(3,1fr);
 
 gap:15px;
 
-justify-content:center;
-
-flex-wrap:wrap;
+width:min(90%,500px);
 
 }
 
@@ -488,37 +493,28 @@ flex-wrap:wrap;
 
 .gallery img{
 
+width:100%;
 
-width:90px;
-
-height:120px;
+aspect-ratio:3/4;
 
 object-fit:cover;
 
+border-radius:20px;
 
-border-radius:15px;
-
-
-box-shadow:
-
-0 0 20px #ff69b4;
-
-
-transform:rotate(-5deg);
-
+box-shadow:0 0 20px pink;
 
 transition:.3s;
 
-
 }
 
 
 
-.gallery img:active{
+.gallery img:hover{
 
-transform:scale(1.1);
+transform:scale(1.05) rotate(3deg);
 
 }
+
 
 
 
@@ -529,53 +525,40 @@ transform:scale(1.1);
 
 
 /* =========================
- REASONS
+REASONS
 ========================= */
 
 
 .reason-card{
 
-
-width:90%;
-
-max-width:350px;
-
+width:min(90%,380px);
 
 padding:20px;
 
-
 margin:8px;
-
 
 border-radius:20px;
 
 
-background:
-
-rgba(255,255,255,.15);
-
+background:rgba(255,255,255,.15);
 
 backdrop-filter:blur(10px);
 
-
-animation:slide .7s;
-
+animation:slideUp .7s;
 
 }
 
 
 
-@keyframes slide{
-
+@keyframes slideUp{
 
 from{
 
 opacity:0;
 
-transform:translateY(30px);
+transform:translateY(40px);
 
 }
-
 
 }
 
@@ -588,28 +571,23 @@ transform:translateY(30px);
 
 
 /* =========================
- STAR WISH
+STAR
 ========================= */
 
 
 #wishStar{
 
-
 font-size:100px;
-
 
 cursor:pointer;
 
-
-animation:starGlow 1.5s infinite;
-
+animation:glow 1.5s infinite;
 
 }
 
 
 
-@keyframes starGlow{
-
+@keyframes glow{
 
 50%{
 
@@ -617,7 +595,6 @@ filter:drop-shadow(0 0 25px yellow);
 
 }
 
-
 }
 
 
@@ -629,34 +606,41 @@ filter:drop-shadow(0 0 25px yellow);
 
 
 /* =========================
- GAME
+GAME
 ========================= */
+
+
+#gameArea{
+
+position:relative;
+
+width:min(90vw,500px);
+
+height:300px;
+
+border-radius:25px;
+
+margin-top:20px;
+
+background:rgba(255,255,255,.08);
+
+overflow:hidden;
+
+}
+
 
 
 #catchHeart{
 
+position:absolute;
 
 font-size:70px;
 
-position:absolute;
-
-
 cursor:pointer;
-
 
 transition:.2s;
 
-
 }
-
-
-
-#game p{
-
-margin-top:100px;
-
-}
-
 
 
 
@@ -666,17 +650,13 @@ margin-top:100px;
 
 
 /* =========================
- FINAL
+FINAL
 ========================= */
 
 
 .final-box{
 
-
-width:90%;
-
-max-width:600px;
-
+width:min(90%,650px);
 
 }
 
@@ -684,11 +664,9 @@ max-width:600px;
 
 .final-box h1{
 
-
-font-size:38px;
+font-size:clamp(28px,6vw,45px);
 
 color:#ff9de2;
-
 
 }
 
@@ -696,14 +674,11 @@ color:#ff9de2;
 
 .final-box p{
 
-
 margin-top:25px;
 
-
-font-size:18px;
+font-size:clamp(15px,3vw,19px);
 
 line-height:1.8;
-
 
 }
 
@@ -714,65 +689,63 @@ line-height:1.8;
 
 
 
-/* =========================
- IPHONE RESPONSIVE
-========================= */
+/* FLOATING HEARTS */
 
+@keyframes float{
+
+from{
+
+transform:translateY(0);
+
+opacity:1;
+
+}
+
+to{
+
+transform:translateY(-100vh);
+
+opacity:0;
+
+}
+
+}
+
+
+
+
+
+
+
+
+/* MOBILE */
 
 @media(max-width:600px){
 
 
+.gallery{
 
-.loading-box h1{
+grid-template-columns:repeat(3,1fr);
 
-font-size:20px;
-
-}
-
-
-.birthday-title{
-
-font-size:32px;
+gap:10px;
 
 }
 
 
-#birthday h2{
+button{
 
-font-size:25px;
-
-}
-
-
-#giftBox{
-
-font-size:90px;
+width:auto;
 
 }
 
 
-.gallery img{
+#gameArea{
 
-width:80px;
-
-height:110px;
-
-}
-
-
-.final-box h1{
-
-font-size:28px;
+height:250px;
 
 }
 
 
 
-.final-box p{
-
-font-size:16px;
-
 }
 
-
-}
